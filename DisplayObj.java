@@ -19,10 +19,8 @@ class DisplayObj {
         this.currentFrame = 0;
     }
     public void update() {
-        System.out.println(Game.tick + "outer");
         long deltaTick = Game.tick - this.lastUpdateTick;
         if (deltaTick == this.tickPerFrame) {
-            System.out.println(Game.tick);
             this.lastUpdateTick = Game.tick;
             if (this.currentFrame == (this.sprite.frames.length-1)) {
                 if (this.busy) {
