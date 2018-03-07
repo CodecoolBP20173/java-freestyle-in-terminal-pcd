@@ -22,6 +22,9 @@ public class Game {
         Game.initialize();
         while (true) {
             long startTime = System.currentTimeMillis();
+            for(int i = 0; i < Renderer.displayObjArray.length; i++) {
+                Renderer.displayObjArray[i].update();
+            }
             Renderer.renderScreen();
             long endTime = System.currentTimeMillis();
             long deltaTime = endTime - startTime;

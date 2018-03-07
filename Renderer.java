@@ -41,7 +41,7 @@ public class Renderer {
     }
 
     public static void renderScreen(){
-        System.out.println(Renderer.displayObjArray.length);
+        
         for (int i=0; i < Renderer.displayObjArray.length; i++) {
             Renderer.printSprite(Renderer.displayObjArray[i]);
         }
@@ -51,10 +51,9 @@ public class Renderer {
         Sprite sprite = object.getSprite();
         String[] frame = sprite.getFrame(object.currentFrame);
         Terminal t = new Terminal();
-
-        int renderPosX = offsetX + object.getPosX();
-        int renderPosY = offsetY + object.getPosY();
-
+        int renderPosX = 1;//offsetX + object.getPosX();
+        int renderPosY = 0;//offsetY + object.getPosY();
+        System.out.println((char)27 + "[30m" +object.currentFrame); 
         t.moveTo(renderPosY, renderPosX);
         for (int i = 0; i < frame.length; i++) {
             System.out.println(frame[i]);
