@@ -20,6 +20,7 @@ public class Game {
     public static long timePerFrame = 100;
     public static void main(String[] args) {
         Game.initialize();
+        
         while (true) {
             long startTime = System.currentTimeMillis();
             Renderer.renderScreen();
@@ -43,5 +44,15 @@ public class Game {
         Renderer.displayObjArray[0] = testObject;
         Renderer.offsetX = 20;
         Renderer.offsetY = 0;
+    }
+    public static HashMap loadSprites () {
+        HashMap sprites = new HashMap;
+        Sprite testSprite = null;
+		try {
+			testSprite = new Sprite(testSpritePalette,"stand_still_happy_anim.txt", 6, 33);
+            sprites.put(name, testSprite);
+		} catch (IOException e) {
+			System.out.println(e);
+		}
     }
 }

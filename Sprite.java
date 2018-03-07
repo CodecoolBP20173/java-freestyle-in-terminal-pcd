@@ -4,7 +4,15 @@ import java.util.Arrays;
 
 class Sprite {
 	public String[][] frames;
-
+	public HashMap palette; 
+	static {
+		this.palette = new HashMap(); 
+		testSpritePalette.put('─', (char)27 + "[47m");
+		testSpritePalette.put('█', (char)27 + "[40m");
+		testSpritePalette.put('░', (char)27 + "[43m");
+		testSpritePalette.put('▒', (char)27 + "[44m");
+		testSpritePalette.put('▄', (char)27 + "[41m");
+	}
 	public Sprite(HashMap palette, String filepath, int numberOfFrames, int frameHeight) throws IOException {
 		this.frames = new String [numberOfFrames][frameHeight];
 		FileReader inputStream = null;
@@ -37,9 +45,9 @@ class Sprite {
 		    	}
 		}
 	};
-
 	public String[] getFrame(int index) {
 		return this.frames[index];
 	};
 
 }
+
