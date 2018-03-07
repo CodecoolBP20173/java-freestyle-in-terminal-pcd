@@ -1,5 +1,7 @@
 import java.util.concurrent.TimeUnit;
 
+
+
 public class Renderer {
     private static DisplayObj[] displayObjArray;
     private static int offsetX;
@@ -72,43 +74,78 @@ public class Renderer {
             DisplayObj creature;
         
 
-        Terminal t = new Terminal();
+        
 
-        //Frame
-        DisplayObj frame = displayObjArray[0];
+        /*Frame
+        DisplayObj frame = displayObjArray["frame"];
         t.moveTo(offsetX + frame.getPosX(), offsetY + frame.getPosX());
-        System.out.print(frame.getContent());
+        printSprite(frame);
 
         //Lifebar
-        DisplayObj lifebar = displayObjArray[0];
+        DisplayObj lifebar = displayObjArray["life"];
         t.moveTo(offsetX + lifebar.getPosX(), offsetY + lifebar.getPosX());
-        System.out.print(lifebar.getContent());
+        printSprite(lifebar);
 
         //Creature
-        DisplayObj creature = displayObjArray[1];
+        DisplayObj creature = displayObjArray["creature"];
         t.moveTo(offsetX + creature.getPosX(), offsetY + creaturer.getPosX());
-        System.out.print(creature.getContent());
+        printSprite(creature);
 
         //Heart
-        DisplayObj heart = displayObjArray[2];
+        DisplayObj heart = displayObjArray["heart"];
         t.moveTo(offsetX + heart.getPosX(), offsetY + heart.getPosX());
-        System.out.print(heart.getContent());
+        printSprite(heart);
 
-        //Pooptch
-        DisplayObj poop = displayObjArray[3];
+        //Pooptchi
+        DisplayObj poop = displayObjArray["poop"];
         t.moveTo(offsetX + poop.getPosX(), offsetY + poop.getPosX());
-        System.out.print(poop.getContent());
+        printSprite(poop);
 
         //Menu
-        DisplayObj menu = displayObjArray[4];
-        t.moveTo(offsetX + menu.getPosX(), offsetY + menu.getPosX());
-        System.out.print(menu.getContent());
+        DisplayObj menu = displayObjArray["menu"];
+        
+        //printSprite(menu);
     }*/
 
-    private void printArrayItem(DisplayObj[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i].getContent());
+    public static void printSprite(){//DisplayObj object) {
+        //String[][] sprite = object.getSprite();
+        //String[] spriteFrame = sprite[sprite.currentFrame];
+        Terminal t = new Terminal();
+        String[] spriteFrame = 
+        {
+            "    _--_     _--_ \n",  
+            "   (    )~~~(    )   \n" , 
+            "    \\           /    \n" ,  
+            "     (  \' _ `  )     \n" ,  
+            "      \\       /      \n" ,  
+            "    .__( `-\' )       \n" ,  
+            "   / !  `---\' \\      \n" ,  
+            "  /  \\         !     \n" ,  
+            " !   /\\        )     \n" ,  
+            " !   !_\\       ).    \n" ,  
+            "  \\    \\       ! \\   \n" , 
+            "   \\___/   )  /__/   \n" , 
+            "     \\    /   !      \n" ,  
+            "     /   !   /       \n" ,  
+            "    !   /__ /___     \n" ,  
+            "    (______)____)    \n"
+        };
+
+        int renderPosX = offsetX; // + object.getPosX();
+        int renderPosY = offsetY;// + object.getPosY();
+        t.moveTo(renderPosY, renderPosX);
+        
+        for(int i = 0; i < spriteFrame.length; i++) {
+            
+            System.out.print(spriteFrame[i]);
+            renderPosY++;
         }
     }
+
+    public static void main(String[] args) {
+        printSprite();
+    }
 }
+
+
 
