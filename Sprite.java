@@ -17,7 +17,7 @@ class Sprite {
         
 			StringBuilder stringBuilder = new StringBuilder();
             while ((charCode = inputStream.read()) != -1) {
-                char character = (char)charCode;
+				char character = (char)charCode;
 				if (character == '\n') {
                     this.frames[frameCounter][lineCounter] = stringBuilder.toString();
                     lineCounter++;

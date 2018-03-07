@@ -39,11 +39,16 @@ public class Game {
         }
     }
     public static void initialize () {
-        Sprite testSprite = Test.testSpriteDeclare();
-        DisplayObj testObject = new DisplayObj(5, 6, testSprite, testSprite, 10);
+        Renderer.screenHeight = 50;
+        Renderer.screenWidth = 100;
+        Renderer.createBackground();
+        Sprite[] testSprites = Test.testSpriteDeclare();
+        DisplayObj testObject1 = new DisplayObj(5, 6, testSprites[0], testSprites[0], 10);
+        DisplayObj testObject2 = new DisplayObj(50, 5, testSprites[1], testSprites[1], 10);
 
-        Renderer.displayObjArray = new DisplayObj[1];
-        Renderer.displayObjArray[0] = testObject;
+        Renderer.displayObjArray = new DisplayObj[2];
+        Renderer.displayObjArray[0] = testObject1;
+        Renderer.displayObjArray[1] = testObject2;
         Renderer.offsetX = 20;
         Renderer.offsetY = 0;
     }

@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class Renderer {
@@ -45,6 +46,20 @@ public class Renderer {
         for (int i=0; i < Renderer.displayObjArray.length; i++) {
             Renderer.printSprite(Renderer.displayObjArray[i]);
         }
+    }
+
+    public static void createBackground() {
+        StringBuilder builder = new StringBuilder();
+        Terminal t = new Terminal();
+        for (int i = 0; i < Renderer.screenWidth; i++) {
+            builder.append(" ");
+        }
+        builder.append("\n");
+        for (int j = 0; j < Renderer.screenHeight; j++) {
+            System.out.print(t.rgbColorBg(255, 255, 255));
+            System.out.print(builder.toString());
+        }
+   
     }
 
     public static void printSprite(DisplayObj object) {
