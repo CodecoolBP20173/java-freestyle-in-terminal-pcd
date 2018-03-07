@@ -11,8 +11,8 @@ public class Renderer {
     private static Color bgColor;
 
     Renderer() {
-        offsetX = 0;
-        offsetY = 0;
+        offsetX = 2;
+        offsetY = 1;
         screenHeight = 53;
         screenWidth = 182;
         /*
@@ -146,23 +146,70 @@ public class Renderer {
             "     !   !  \\`.    /  \n" ,    
             "     /  /__   \\__/   \n" ,   
             "    (______)         \n"
-        }};
+        },
+        {
+            "   _--_     _--_       \n" ,  
+            "  (    )~~~(    )      \n" , 
+            "   \\           /       \n" ,  
+            "    (  \' _ `  )        \n" ,  
+            "     \\       /         \n" ,  
+            "      ( `-\' )          \n" ,  
+            "    .--`---\'\\          \n" , 
+            "   /        _>\\        \n" , 
+            "  /  /-___-\'   )       \n" , 
+            "/\'  (        _/        \n" , 
+            "\\___/`------\' )        \n" ,  
+            "     \\      `<         \n" ,  
+            "   ___>-_     \\   /-\\   \n" , 
+            "  /      `-_   `-/  /   \n" , 
+            " (  \\---__/ `-_    /   \n" ,  
+            "  \\__)         `-_/    \n"
+        },
+        {
+            "    _--_     _--_         \n" , 
+             "   (    )~~~(    )        \n" , 
+            "    \\           /         \n" , 
+             "     (  \' _ `  )          \n" , 
+            "      \\       /           \n" , 
+            "    .__( `-\' )  ___       \n" , 
+            "   /   /`---\'`-\'   \\      \n" , 
+            "  /   /          ._/   __ \n" , 
+             "/\'   /.-----\\___/     /  )\n" , 
+             "\\___//          `----\'   !\n" , 
+             "     \\            ______/ \n" , 
+             "      `--_____----\'       \n" , 
+             "        \\    /            \n" , 
+             "        !   !             \n" , 
+              "        /  /__            \n" , 
+            "       (______)           \n"
+        }
+    };
 
         int renderPosX = offsetX; // + object.getPosX();
         int renderPosY = offsetY;// + object.getPosY();
 
         try {
         t.moveTo(renderPosY, renderPosX);
-        
         for(int i = 0; i < spriteFrames[0].length; i++) {
             System.out.print(spriteFrames[0][i]);
-            renderPosY++;
         }
 
         TimeUnit.MILLISECONDS.sleep(500);
         t.moveTo(renderPosY, renderPosX);
         for (int i = 0; i < spriteFrames[1].length; i++) {
             System.out.print(spriteFrames[1][i]);
+        }
+
+        TimeUnit.MILLISECONDS.sleep(500);
+        t.moveTo(renderPosY, renderPosX);
+        for (int i = 0; i < spriteFrames[2].length; i++) {
+            System.out.print(spriteFrames[2][i]);
+        }
+
+        TimeUnit.MILLISECONDS.sleep(500);
+        t.moveTo(renderPosY, renderPosX);
+        for (int i = 0; i < spriteFrames[3].length; i++) {
+            System.out.print(spriteFrames[3][i]);
         }
     } catch (Exception e) {
 
