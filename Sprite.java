@@ -1,16 +1,11 @@
 import java.io.*;
 import java.util.HashMap;
+import java.util.Arrays;
 
 class Sprite {
-	private String[][] frames;
-	private int frameWidth;
-	private int frameHeight;
-	private int numberOfFrames;
+	public String[][] frames;
 
-	public Sprite(HashMap palette, String filepath, int numberOfFrames, int frameWidth, int frameHeight) {
-		this.numberOfFrames = numberOfFrames;
-		this.frameWidth = frameWidth;
-		this.frameHeight = frameHeight;
+	public Sprite(HashMap palette, String filepath, int numberOfFrames, int frameWidth, int frameHeight) throws IOException {
 		this.frames = new String [numberOfFrames][frameHeight];
 
 		FileReader inputStream = null;
@@ -18,34 +13,32 @@ class Sprite {
             inputStream = new FileReader(filepath);
             		
 			int charCode;
-			String [] 
-			StringBuilder stringBuilder = new StringBuilder();
+            int frameCounter = 0;
+            int lineCounter = 0;
+            
+			StringBuilder stringBuilder = new StringBuilder(); 
             while ((charCode = inputStream.read()) != -1) {
+                char character = (char)charCode;  
+//                System.out.println(character);
 				if (character == '\n') {
-					
-				} else {
-
+                    this.frames[frameCounter][lineCounter] = stringBuilder.toString();
+                    lineCounter++;
+                    stringBuilder.setLength(0);
+                    if (lineCounter == frameHeight) {
+                        lineCounter=0;
+                        frameCounter++;   
+                    }
+			    } else {
+                    String charPrint = palette.get(character) + " ";
+                    stringBuilder.append(charPrint);
 				}
-				char character = (char)charCode;  
-                System.out.println((character == '\n') ? "newline" : character);
+                
             }	
 		} finally {
 		    	if (inputStream != null) {
 		        	inputStream.close();
 		    	}
-		}		
-	};
-
-	public int getFrameHeight() {
-		return this.frameHeight;
-	};
-
-	public int getFrameWidth() {
-		return this.frameWidth;
-	};
-
-	public int getNumberOfFrames() {
-		return this.numberOfFrames;
+		}
 	};
 
 	public String[] getFrame(int index) {
@@ -54,11 +47,3 @@ class Sprite {
 
 }
 
-class Game {
-	public static void main(String [] args) {
-		HashMap testSpritePalette = new HashMap();
-		testSpritePalette.put('#', (char)27 + "[34m");
-		testSpritePalette.put('O', (char)27 + "[43m");
-		Sprite testSprite = new Sprite(testSpritePalette,"sprite_sheet.txt", 4, 14, 3);
-	}
-}
