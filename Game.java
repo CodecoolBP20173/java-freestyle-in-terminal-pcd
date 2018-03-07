@@ -15,9 +15,6 @@ Methods:
     sleep (timePerFrame - deltaTime)
 */
 
-import com.codecool.termlib.Terminal;
-import com.codecool.termlib.Color;
-
 public class Game {
     public static long tick = 0;
     public static int timePerFrame = 100;
