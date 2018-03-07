@@ -59,18 +59,18 @@ public class Renderer {
         return displayObjArray[index];
     }
 
-    public static void renderScreen(){
-        /**
-         * It prints the display object array by their coordinates
-         */
+    /*public static void renderScreen(){
         
-        /*
+         It prints the display object array by their coordinates
+        
+        
+        
             DisplayObj frame;
             DisplayObj menu;
             DisplayObj poop;
             DisplayObj heart;
             DisplayObj creature;
-        */
+        
 
         Terminal t = new Terminal();
 
@@ -103,7 +103,7 @@ public class Renderer {
         DisplayObj menu = displayObjArray[4];
         t.moveTo(offsetX + menu.getPosX(), offsetY + menu.getPosX());
         System.out.print(menu.getContent());
-    }
+    }*/
 
     private void printArrayItem(DisplayObj[] array) {
         for (int i = 0; i < array.length; i++) {
