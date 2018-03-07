@@ -111,8 +111,7 @@ public class Renderer {
         //String[][] sprite = object.getSprite();
         //String[] spriteFrame = sprite[sprite.currentFrame];
         Terminal t = new Terminal();
-        String[] spriteFrame = 
-        {
+        String[][] spriteFrames = {{
             "    _--_     _--_ \n",  
             "   (    )~~~(    )   \n" , 
             "    \\           /    \n" ,  
@@ -129,17 +128,47 @@ public class Renderer {
             "     /   !   /       \n" ,  
             "    !   /__ /___     \n" ,  
             "    (______)____)    \n"
-        };
+        },
+        {
+            "   _--_     _--_     \n" ,  
+            "  (    )~~~(    )    \n" ,   
+            "   \\           /     \n" ,   
+            "    (  \' _ `  )      \n" ,   
+            "     \\       /       \n" ,   
+            "      ( `-\' )        \n" ,    
+            "   _--\'`---_         \n" ,    
+            "  /         \\___     \n" ,   
+            " /   /       !  \\    \n" ,    
+            "(   <        !__/    \n" ,   
+            " \\   \\      /\\       \n" ,  
+            "  \\--/   \\ /  \\  ._  \n" ,    
+            "    \\\\`.    )-   \\/  ) \n" ,    
+            "     !   !  \\`.    /  \n" ,    
+            "     /  /__   \\__/   \n" ,   
+            "    (______)         \n"
+        }};
 
         int renderPosX = offsetX; // + object.getPosX();
         int renderPosY = offsetY;// + object.getPosY();
+
+        try {
         t.moveTo(renderPosY, renderPosX);
         
-        for(int i = 0; i < spriteFrame.length; i++) {
-            
-            System.out.print(spriteFrame[i]);
+        for(int i = 0; i < spriteFrames[0].length; i++) {
+            System.out.print(spriteFrame[0][i]);
             renderPosY++;
         }
+
+        TimeUnit.MILLISECONDS.sleep(500);
+        t.moveTo(renderPosY, renderPosX);
+        for (int i = 0; i < spriteFrame[1].length; i++) {
+            System.out.print(spriteFrame[1][i]);
+        }
+    } catch (Exception e) {
+
+    }
+
+
     }
 
     public static void main(String[] args) {
