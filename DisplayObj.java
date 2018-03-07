@@ -3,12 +3,12 @@ class DisplayObj {
     private int posY;
     private Sprite sprite;
     private Sprite defaultSprite;
-    private int currentFrame;
+    public int currentFrame;
     private int tickPerFrame;
     private long lastUpdateTick;
     private boolean busy;
 
-    public void displayObj(int posX, int posY, Sprite sprite, Sprite defaultSprite, int tickPerFrame){
+    public DisplayObj(int posX, int posY, Sprite sprite, Sprite defaultSprite, int tickPerFrame){
         this.posX = posX;
         this.posY = posY;
         this.sprite = sprite;
@@ -17,7 +17,7 @@ class DisplayObj {
         this.lastUpdateTick = 0;
         this.busy = false;
         this.currentFrame = 0;
-    } 
+    }
     public void update() {
         long deltaTick = Game.tick - this.lastUpdateTick;
         if (deltaTick == this.tickPerFrame) {
