@@ -155,14 +155,14 @@ public class Renderer {
         t.moveTo(renderPosY, renderPosX);
         
         for(int i = 0; i < spriteFrames[0].length; i++) {
-            System.out.print(spriteFrame[0][i]);
+            System.out.print(spriteFrames[0][i]);
             renderPosY++;
         }
 
         TimeUnit.MILLISECONDS.sleep(500);
         t.moveTo(renderPosY, renderPosX);
-        for (int i = 0; i < spriteFrame[1].length; i++) {
-            System.out.print(spriteFrame[1][i]);
+        for (int i = 0; i < spriteFrames[1].length; i++) {
+            System.out.print(spriteFrames[1][i]);
         }
     } catch (Exception e) {
 
