@@ -5,9 +5,8 @@ import java.util.Arrays;
 class Sprite {
 	public String[][] frames;
 
-	public Sprite(HashMap palette, String filepath, int numberOfFrames, int frameWidth, int frameHeight) throws IOException {
+	public Sprite(HashMap palette, String filepath, int numberOfFrames, int frameHeight) throws IOException {
 		this.frames = new String [numberOfFrames][frameHeight];
-
 		FileReader inputStream = null;
 		try {
             inputStream = new FileReader(filepath);
@@ -15,11 +14,10 @@ class Sprite {
 			int charCode;
             int frameCounter = 0;
             int lineCounter = 0;
-            
-			StringBuilder stringBuilder = new StringBuilder(); 
+        
+			StringBuilder stringBuilder = new StringBuilder();
             while ((charCode = inputStream.read()) != -1) {
-                char character = (char)charCode;  
-//                System.out.println(character);
+                char character = (char)charCode;
 				if (character == '\n') {
                     this.frames[frameCounter][lineCounter] = stringBuilder.toString();
                     lineCounter++;
@@ -32,7 +30,6 @@ class Sprite {
                     String charPrint = palette.get(character) + " ";
                     stringBuilder.append(charPrint);
 				}
-                
             }	
 		} finally {
 		    	if (inputStream != null) {

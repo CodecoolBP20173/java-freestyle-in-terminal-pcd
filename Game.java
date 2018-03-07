@@ -20,10 +20,10 @@ import com.codecool.termlib.Color;
 
 public class Game {
     public static long tick = 0;
-    public static int timePerFrame = 0;
+    public static int timePerFrame = 100;
     public static void main(String[] args) {
-        while (true) {
-            System.out.println("Helloka");
+        Test.testSpriteDeclare();
+       /* while (true) {
             try {
                 Thread.sleep(timePerFrame);
             } catch(InterruptedException ex) {
@@ -33,6 +33,6 @@ public class Game {
             if (tick == 200) {
                 break;
             } 
-        }
+       }*/
     }
 }
