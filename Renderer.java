@@ -1,5 +1,3 @@
-import com.codecool.termlib.Terminal;
-import com.codecool.termlib.Color;
 import java.util.concurrent.TimeUnit;
 
 public class Renderer {
