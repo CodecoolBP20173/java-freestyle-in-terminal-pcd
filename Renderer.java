@@ -1,7 +1,5 @@
 import java.util.concurrent.TimeUnit;
 
-
-
 public class Renderer {
     private static DisplayObj[] displayObjArray;
     private static int offsetX;
@@ -117,7 +115,7 @@ public class Renderer {
             "    \\           /    \n" ,  
             "     (  \' _ `  )     \n" ,  
             "      \\       /      \n" ,  
-            "    .__( `-\' )       \n" ,  
+            "    .__(      )       \n" ,  
             "   / !  `---\' \\      \n" ,  
             "  /  \\         !     \n" ,  
             " !   /\\        )     \n" ,  
@@ -135,7 +133,7 @@ public class Renderer {
             "   \\           /     \n" ,   
             "    (  \' _ `  )      \n" ,   
             "     \\       /       \n" ,   
-            "      ( `-\' )        \n" ,    
+            "      (      )        \n" ,    
             "   _--\'`---_         \n" ,    
             "  /         \\___     \n" ,   
             " /   /       !  \\    \n" ,    
@@ -153,7 +151,7 @@ public class Renderer {
             "   \\           /       \n" ,  
             "    (  \' _ `  )        \n" ,  
             "     \\       /         \n" ,  
-            "      ( `-\' )          \n" ,  
+            "      (      )          \n" ,  
             "    .--`---\'\\          \n" , 
             "   /        _>\\        \n" , 
             "  /  /-___-\'   )       \n" , 
@@ -171,7 +169,7 @@ public class Renderer {
             "    \\           /         \n" , 
              "     (  \' _ `  )          \n" , 
             "      \\       /           \n" , 
-            "    .__( `-\' )  ___       \n" , 
+            "    .__(      )  ___       \n" , 
             "   /   /`---\'`-\'   \\      \n" , 
             "  /   /          ._/   __ \n" , 
              "/\'   /.-----\\___/     /  )\n" , 
