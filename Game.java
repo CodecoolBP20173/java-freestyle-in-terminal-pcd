@@ -27,10 +27,7 @@ import java.lang.*;
 public class Game {
     public static long tick = 0;
     public static HashMap spriteMap = new HashMap();
-<<<<<<< HEAD
     public static HashMap objectMap = new HashMap();
-=======
->>>>>>> development
     public static long timePerFrame = 100;
     private static Character tryToRead() {
         try {
