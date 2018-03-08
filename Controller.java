@@ -18,11 +18,12 @@ class Controller {
             if (this.depression == 5) {
                 this.tamagotchiHealth -=2;
             }
-            Renderer.displayObjMap.get("healthBar").currentFrame = this.tamagotchiHealth;  
+
+            //Renderer.displayObjMap["healthBar"].currentFrame = this.tamagotchiHealth;  
         }       
     }
 
-    public static void selectMenu(int menuIndex) {
+    /*public void selectMenu(int menuIndex) {
         switch (menuIndex) {
             case 1:
                 Renderer.displayObjMap.get("menuEat").currentFrame = 1;
@@ -47,5 +48,5 @@ class Controller {
 
     public void poop() {
         DisplayObj tamagotchi = Renderer.displayObjMap.get("tamagotchi");
-    }
+    }*/
 }

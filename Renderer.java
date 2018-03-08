@@ -12,41 +12,9 @@ public class Renderer {
     public static int screenHeight; 
     public static Color bgColor;
 
-    public static void setDisplayObjMap(String key, DisplayObj value) {
-        /**
-         * It sets to the given value in the HashMap by its key
-         * String value: value
-         * String key: key
-         */
-        if (displayObjMap.containsKey(key)) displayObjMap.put(key, value);
-    }
-
     public static Iterator getIteratorForDisplayObjMap() {
         Iterator it = displayObjMap.entrySet().iterator();
         return it;
-    }
-
-    public static void setDisplayObjMap(HashMap displayObjMapInput) {
-        /**
-         * It sets the displayObj map to the given map
-         * DisplayObjMap: DisplayObjs map
-         */
-        displayObjMap = displayObjMapInput;
-    }
-
-    public static HashMap getDisplayObjMap() {
-        /**
-         * It returns the currect DisplayObj map
-         */
-        return displayObjMap;
-    }
-
-    public static DisplayObj getDisplayObj(String key) {
-        /**
-         * It returns a DisplayObj by its key in the map
-         * int: key in the map
-         */
-        return (DisplayObj)displayObjMap.get(key);
     }
 
     public static void renderScreen(){
