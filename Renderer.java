@@ -81,6 +81,8 @@ public class Renderer {
         for (int i = 0; i < frame.length; i++) {
             t.moveTo(renderPosY, renderPosX+i);
             System.out.println(frame[i]);
+            t.moveTo(renderPosY+5, renderPosX);
+            System.out.println(object.currentFrame);
         }
     }
 }

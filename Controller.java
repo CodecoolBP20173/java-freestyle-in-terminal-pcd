@@ -31,7 +31,7 @@ class Controller {
             case 1:
                 menuEat.currentFrame = 1;
                 menuParty.currentFrame = 0;
-                menuEat.currentFrame = 0;
+                menuClean.currentFrame = 0;
                 Controller.currentMenu = 1;
                 break;
             case 2:
