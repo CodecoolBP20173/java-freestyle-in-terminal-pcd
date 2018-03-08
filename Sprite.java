@@ -10,7 +10,7 @@ class Sprite {
 		Terminal t = new Terminal();
 		spritePalette.put('─', t.rgbColorBg(255, 255, 255));
 		spritePalette.put('G', t.rgbColorBg(127, 127, 127));
-		spritePalette.put('░', t.rgbColorBg(233, 227, 198));
+		spritePalette.put('░', t.rgbColorBg(239, 228, 177));
 		spritePalette.put('$', t.rgbColorBg(153, 217, 234));
 		spritePalette.put('M', t.rgbColorBg(185, 122, 87));
 		spritePalette.put('@', t.rgbColorBg(255, 174, 201));
@@ -18,9 +18,12 @@ class Sprite {
 		spritePalette.put('█', t.rgbColorBg(215, 76, 76));
 		spritePalette.put('W', t.rgbColorBg(60, 172, 13));
 		spritePalette.put('A', t.rgbColorBg(23, 27, 0));
+<<<<<<< HEAD
 		spritePalette.put('F', t.rgbColorBg(0, 0, 0));
 		spritePalette.put('K', t.rgbColorBg(103, 49, 19));
 		spritePalette.put('T', t.rgbColorBg(126, 71, 41));
+=======
+>>>>>>> development
 	}
 
 	public Sprite(String filepath, int numberOfFrames, int frameHeight) throws IOException {		
