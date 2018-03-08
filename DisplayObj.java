@@ -21,8 +21,11 @@ class DisplayObj {
         this.autoAnimated = autoAnimated;
     }
     public void update() {
+        if (!this.autoAnimated) {
+            return;
+        }
         long deltaTick = Game.tick - this.lastUpdateTick;
-        if (deltaTick == this.tickPerFrame && this.autoAnimated == true) {
+        if (deltaTick == this.tickPerFrame) {
             this.lastUpdateTick = Game.tick;
             if (this.currentFrame == (this.sprite.frames.length-1)) {
                 if (this.busy) {

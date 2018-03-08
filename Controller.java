@@ -1,15 +1,15 @@
 class Controller {
     public static boolean alive = true;
-    private static int hunger = 0;
-    private static int depression = 0;
+    private static int hunger = 3;
+    private static int depression = 3;
     private static int tamagotchiHealth = 10;
-    private static int tickPerFrame = 10;
+    private static int tickPerFrame = 100;
     private static long lastUpdateTick;
 
     public static int currentMenu = 1;
 
     public static void update() {
-        //System.out.println(Controller.alive);
+        //System.out.println("update");
         long deltaTick = Game.tick - Controller.lastUpdateTick;
         if (deltaTick == Controller.tickPerFrame && Controller.alive) {
             //System.out.println("Hunger:" + Controller.hunger);
@@ -31,11 +31,8 @@ class Controller {
                 zoziGotchiObj.setSprite((Sprite)Game.spriteMap.get("dead"));
                 Renderer.displayObjMap.put("zoziGotchi", zoziGotchiObj);
             }
-
-            DisplayObj statusBarObj = (DisplayObj)Renderer.displayObjMap.get("statusBar"); 
-            statusBarObj.currentFrame = 10 - Controller.tamagotchiHealth;
-            Renderer.displayObjMap.put("statusBar", statusBarObj);
-            Controller.lastUpdateTick = Game.tick; 
+            upDateStatusBar();
+            Controller.lastUpdateTick = Game.tick;
         }       
     }
 
@@ -67,24 +64,48 @@ class Controller {
     }
 
     public static void cooseMenu() {
+        DisplayObj zoziGotchiObj = (DisplayObj)Renderer.displayObjMap.get("zoziGotchi");
+        if (zoziGotchiObj.busy) {
+            return;
+        }
         switch (Controller.currentMenu) {
             case 1:
-                DisplayObj zoziGotchiObj = (DisplayObj)Renderer.displayObjMap.get("zoziGotchi"); 
+                // Eat
                 zoziGotchiObj.currentFrame = 0;
                 zoziGotchiObj.busy = true;
                 zoziGotchiObj.setSprite((Sprite)Game.spriteMap.get("eat"));
-                Renderer.displayObjMap.put("zoziGotchi", zoziGotchiObj);
+                Controller.hunger = Math.max(Controller.hunger-1, -5);
+                if (Controller.hunger < 0) {
+                    Controller.tamagotchiHealth = Math.max((Controller.tamagotchiHealth-1), 0);
+                } else {
+                    Controller.tamagotchiHealth = Math.min((Controller.tamagotchiHealth+1), 10);
+                }
                 break;
             case 2:
+                // Party
+                zoziGotchiObj.currentFrame = 0;
+                zoziGotchiObj.busy = true;
+                zoziGotchiObj.setSprite((Sprite)Game.spriteMap.get("dance"));
+                Controller.depression = Math.max(Controller.depression-1, -5);
+                if (Controller.depression < 0) {
+                    Controller.tamagotchiHealth = Math.max((Controller.tamagotchiHealth-1), 0);
+                } else {
+                    Controller.tamagotchiHealth = Math.min((Controller.tamagotchiHealth+1), 10);
+                }
                 break;
             case 3:
+                // Clean
                 break;
         }
+        upDateStatusBar();
     }
 
-    
+    private static void upDateStatusBar() {
+        DisplayObj statusBarObj = (DisplayObj)Renderer.displayObjMap.get("statusBar"); 
+        statusBarObj.currentFrame = 10 - Controller.tamagotchiHealth; 
+    }
 
-    public static void poop() {
+    private static void poop() {
         
     }
 }
