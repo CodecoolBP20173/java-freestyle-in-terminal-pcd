@@ -40,10 +40,18 @@ public class Game {
     }
     private static void handleInput(Character input) {
         if (input == 'a') {
-            // TODO Controller for menu
+            if (Controller.currentMenu != 1){
+                Controller.selectMenu(Controller.currentMenu-1);
+            } else {
+                continue;
+            }
             System.out.print("LEFT");
         } else if (input == 'd') {
-            // TODO Controller for menu
+            if (Controller.currentMenu != 3){
+                Controller.selectMenu(Controller.currentMenu+1);
+            } else {
+                continue;
+            }
             System.out.print("RIGHT");
         } else if (input == 'q') {
             System.exit(0);
