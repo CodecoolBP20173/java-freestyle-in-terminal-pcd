@@ -5,7 +5,7 @@ class Controller {
     private static int tickPerFrame = 5;
     private static long lastUpdateTick;
 
-    public int currentMenu = 1;
+    public static int currentMenu = 1;
 
     public void update() {
         long deltaTick = Game.tick - this.lastUpdateTick;
@@ -18,11 +18,11 @@ class Controller {
             if (this.depression == 5) {
                 this.tamagotchiHealth -=2;
             }
-            Renderer.displayObjMap["healthBar"].currentFrame = this.tamagotchiHealth;  
+            //Renderer.displayObjMap["healthBar"].currentFrame = this.tamagotchiHealth;  
         }       
     }
 
-    public void selectMenu(int menuIndex) {
+    /*public void selectMenu(int menuIndex) {
         switch (menuIndex) {
             case 1:
                 Renderer.displayObjMap["menuEat"].currentFrame = 1;
@@ -47,5 +47,5 @@ class Controller {
 
     public void poop() {
         DisplayObj tamagotchi = Renderer.displayObjMap["tamagotchi"];
-    }
+    }*/
 }
