@@ -46,16 +46,12 @@ public class Game {
             if (Controller.currentMenu != 1){
                 Controller.selectMenu(Controller.currentMenu-1);
                 t.moveTo(80, 40);
-                System.out.print(t.rgbColor(255, 0, 0));
-                System.out.println(Controller.currentMenu);
             }
             
         } else if (input == 'd') {
             if (Controller.currentMenu != 3){
                 Controller.selectMenu(Controller.currentMenu+1);
                 t.moveTo(80, 40);
-                System.out.print(t.rgbColor(255, 0, 0));
-                System.out.println(Controller.currentMenu);
             }
             
         } else if (input == 'e') {
@@ -101,8 +97,8 @@ public class Game {
     }
     
     public static void initialize () {
-        Renderer.screenHeight = 50;
-        Renderer.screenWidth = 100;
+        Renderer.screenHeight = 62;
+        Renderer.screenWidth = 200;
         Renderer.createBackground();
         
         try {
@@ -119,13 +115,13 @@ public class Game {
         } catch (IOException e) {
             System.out.println(e);
         }
-        DisplayObj zoziGotchi = new DisplayObj(15, 6, (Sprite)spriteMap.get("standStill"), (Sprite)spriteMap.get("standStill"), 10, true);
-        DisplayObj menuEat = new DisplayObj(10, 40, (Sprite)spriteMap.get("menuEat"), (Sprite)spriteMap.get("menuEat"), 10, false);
-        DisplayObj menuParty = new DisplayObj(25, 40, (Sprite)spriteMap.get("menuParty"), (Sprite)spriteMap.get("menuParty"), 10, false);
-        DisplayObj menuClean = new DisplayObj(40, 40, (Sprite)spriteMap.get("menuClean"), (Sprite)spriteMap.get("menuClean"), 10, false);
-        DisplayObj heart = new DisplayObj(5, 6, (Sprite)spriteMap.get("heart"), (Sprite)spriteMap.get("heart"), 10, true);
-        DisplayObj statusBar = new DisplayObj(5, 6, (Sprite)spriteMap.get("statusBar"), (Sprite)spriteMap.get("statusBar"), 10, true);
-        DisplayObj poop = new DisplayObj(5, 6, (Sprite)spriteMap.get("poop"), (Sprite)spriteMap.get("poop"), 10, true);
+        DisplayObj zoziGotchi = new DisplayObj(5, 5, (Sprite)spriteMap.get("standStill"), (Sprite)spriteMap.get("standStill"), 10, true);
+        DisplayObj menuEat = new DisplayObj(5, 40, (Sprite)spriteMap.get("menuEat"), (Sprite)spriteMap.get("menuEat"), 10, false);
+        DisplayObj menuParty = new DisplayObj(20, 40, (Sprite)spriteMap.get("menuParty"), (Sprite)spriteMap.get("menuParty"), 10, false);
+        DisplayObj menuClean = new DisplayObj(35, 40, (Sprite)spriteMap.get("menuClean"), (Sprite)spriteMap.get("menuClean"), 10, false);
+        DisplayObj heart = new DisplayObj(45, 5, (Sprite)spriteMap.get("heart"), (Sprite)spriteMap.get("heart"), 10, true);
+        DisplayObj statusBar = new DisplayObj(59, 6, (Sprite)spriteMap.get("statusBar"), (Sprite)spriteMap.get("statusBar"), 10, false);
+        DisplayObj poop = new DisplayObj(50, 30, (Sprite)spriteMap.get("poop"), (Sprite)spriteMap.get("poop"), 10, true);
 
         Renderer.displayObjMap = new HashMap();
         Renderer.displayObjMap.put("zoziGotchi", zoziGotchi);
@@ -136,7 +132,7 @@ public class Game {
         Renderer.displayObjMap.put("statusbar", statusBar);
 
 
-        Renderer.offsetX = 20;
+        Renderer.offsetX = 50;
         Renderer.offsetY = 0;
     }
 }

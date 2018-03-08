@@ -23,7 +23,7 @@ class DisplayObj {
     public void update() {
         long deltaTick = Game.tick - this.lastUpdateTick;
         System.out.println(this.posX);
-        if (deltaTick == this.tickPerFrame ) { //&& this.autoAnimated == true
+        if (deltaTick == this.tickPerFrame && this.autoAnimated == true) {
             System.out.println("updating");
             this.lastUpdateTick = Game.tick;
             if (this.currentFrame == (this.sprite.frames.length-1)) {
