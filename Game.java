@@ -26,7 +26,7 @@ import java.lang.*;
 
 public class Game {
     public static long tick = 0;
-    public HashMap spriteMap = new HashMap();
+    public static HashMap spriteMap = new HashMap();
     public static long timePerFrame = 100;
     private static Character tryToRead() {
         try {
@@ -43,15 +43,11 @@ public class Game {
         if (input == 'a') {
             if (Controller.currentMenu != 1){
                 Controller.selectMenu(Controller.currentMenu-1);
-            } else {
-                continue;
             }
             System.out.print("LEFT");
         } else if (input == 'd') {
             if (Controller.currentMenu != 3){
                 Controller.selectMenu(Controller.currentMenu+1);
-            } else {
-                continue;
             }
             System.out.print("RIGHT");
         } else if (input == 'q') {
