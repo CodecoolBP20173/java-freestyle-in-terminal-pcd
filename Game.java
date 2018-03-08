@@ -15,24 +15,41 @@ Methods:
     sleep (timePerFrame - deltaTime)
 */
 
-import com.codecool.termlib.Terminal;
-import com.codecool.termlib.Color;
-
 public class Game {
     public static long tick = 0;
-    public static int timePerFrame = 0;
+    public static long timePerFrame = 100;
     public static void main(String[] args) {
+        Game.initialize();
         while (true) {
-            System.out.println("Helloka");
-            try {
-                Thread.sleep(timePerFrame);
-            } catch(InterruptedException ex) {
-                Thread.currentThread().interrupt();
+            long startTime = System.currentTimeMillis();
+            for(int i = 0; i < Renderer.displayObjArray.length; i++) {
+                Renderer.displayObjArray[i].update();
             }
-            tick++;
-            if (tick == 200) {
-                break;
-            } 
+            Renderer.renderScreen();
+            long endTime = System.currentTimeMillis();
+            long deltaTime = endTime - startTime;
+            if (deltaTime < timePerFrame) {
+                try {
+                    Thread.sleep(timePerFrame - deltaTime);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+            Game.tick++;
         }
+    }
+    public static void initialize () {
+        Renderer.screenHeight = 50;
+        Renderer.screenWidth = 100;
+        Renderer.createBackground();
+        Sprite[] testSprites = Test.testSpriteDeclare();
+        DisplayObj testObject1 = new DisplayObj(5, 6, testSprites[0], testSprites[0], 10);
+        DisplayObj testObject2 = new DisplayObj(50, 5, testSprites[1], testSprites[1], 10);
+
+        Renderer.displayObjArray = new DisplayObj[2];
+        Renderer.displayObjArray[0] = testObject1;
+        Renderer.displayObjArray[1] = testObject2;
+        Renderer.offsetX = 20;
+        Renderer.offsetY = 0;
     }
 }
