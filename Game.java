@@ -55,22 +55,24 @@ public class Game {
             }
             
         } else if (input == 'e') {
-            //TODO control: choosemenu
+            Controller.cooseMenu();
         } else if (input == 'q') {
             System.exit(0);
         }
     }
     private static void run() {
         long startTime = System.currentTimeMillis();
-        Iterator it = Renderer.getIteratorForDisplayObjMap();
+        
+        Controller.update();
 
+        Iterator it = Renderer.getIteratorForDisplayObjMap();
         while(it.hasNext()) {
             Map.Entry mapItem = (Map.Entry)it.next();
             DisplayObj displayItem = (DisplayObj)mapItem.getValue();
             displayItem.update();
         }
-
         Renderer.renderScreen();
+
         long endTime = System.currentTimeMillis();
         long deltaTime = endTime - startTime;
         if (deltaTime < timePerFrame) {
@@ -102,7 +104,7 @@ public class Game {
         Renderer.createBackground();
         
         try {
-            Sprite testSprite = new Sprite("stand_still_happy_anim.txt", 6, 33);
+            Sprite testSprite = new Sprite("stand_still.txt", 6, 33);
             spriteMap.put("standStill", testSprite);
             spriteMap.put("menuEat", new Sprite("menu1.txt", 2, 7));
             spriteMap.put("menuParty", new Sprite("menu2.txt", 2, 7));
@@ -112,6 +114,7 @@ public class Game {
             spriteMap.put("statusBar", new Sprite("statusbar.txt", 11, 3));
             spriteMap.put("poop", new Sprite("poop.txt", 3, 19));
             spriteMap.put("eat", new Sprite("eat.txt", 6, 33));
+            spriteMap.put("dead", new Sprite("dead.txt", 1, 34));
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -119,7 +122,7 @@ public class Game {
         DisplayObj menuEat = new DisplayObj(5, 40, (Sprite)spriteMap.get("menuEat"), (Sprite)spriteMap.get("menuEat"), 10, false);
         DisplayObj menuParty = new DisplayObj(20, 40, (Sprite)spriteMap.get("menuParty"), (Sprite)spriteMap.get("menuParty"), 10, false);
         DisplayObj menuClean = new DisplayObj(35, 40, (Sprite)spriteMap.get("menuClean"), (Sprite)spriteMap.get("menuClean"), 10, false);
-        DisplayObj heart = new DisplayObj(45, 5, (Sprite)spriteMap.get("heart"), (Sprite)spriteMap.get("heart"), 10, true);
+        DisplayObj heart = new DisplayObj(45, 5, (Sprite)spriteMap.get("heart"), (Sprite)spriteMap.get("heart"), 10, false);
         DisplayObj statusBar = new DisplayObj(59, 6, (Sprite)spriteMap.get("statusBar"), (Sprite)spriteMap.get("statusBar"), 10, false);
         DisplayObj poop = new DisplayObj(50, 30, (Sprite)spriteMap.get("poop"), (Sprite)spriteMap.get("poop"), 10, true);
 
@@ -129,8 +132,7 @@ public class Game {
         Renderer.displayObjMap.put("menuParty", menuParty);
         Renderer.displayObjMap.put("menuClean", menuClean);
         Renderer.displayObjMap.put("heart", heart);
-        Renderer.displayObjMap.put("statusbar", statusBar);
-
+        Renderer.displayObjMap.put("statusBar", statusBar);
 
         Renderer.offsetX = 50;
         Renderer.offsetY = 0;

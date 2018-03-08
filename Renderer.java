@@ -72,16 +72,17 @@ public class Renderer {
     }
 
     public static void printSprite(DisplayObj object) {
-        Sprite sprite = object.getSprite();
-        String[] frame = sprite.getFrame(object.currentFrame);
         Terminal t = new Terminal();
+        Sprite sprite = object.getSprite();
         int renderPosX = 1 + offsetY + object.getPosY();
         int renderPosY = offsetX + object.getPosX();
+        String[] frame = sprite.getFrame(object.currentFrame);
+        
+
 
         for (int i = 0; i < frame.length; i++) {
             t.moveTo(renderPosY, renderPosX+i);
             System.out.println(frame[i]);
-            t.moveTo(renderPosY+5, renderPosX);
         }
     }
 }
