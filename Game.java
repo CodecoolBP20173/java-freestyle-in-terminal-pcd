@@ -40,15 +40,18 @@ public class Game {
         return null;
     }
     private static void handleInput(Character input) {
+        Terminal t = new Terminal();
         if (input == 'a') {
             if (Controller.currentMenu != 1){
                 Controller.selectMenu(Controller.currentMenu-1);
             }
+            System.out.print(t.rgbColor(0, 0, 0));
             System.out.print("LEFT");
         } else if (input == 'd') {
             if (Controller.currentMenu != 3){
                 Controller.selectMenu(Controller.currentMenu+1);
             }
+            System.out.print(t.rgbColor(0, 0, 0));
             System.out.print("RIGHT");
         } else if (input == 'q') {
             System.exit(0);
@@ -107,10 +110,10 @@ public class Game {
         } catch (IOException e) {
             System.out.println(e);
         }
-        DisplayObj zoziGotchi = new DisplayObj(5, 6, (Sprite)spriteMap.get("standStill"), (Sprite)spriteMap.get("standStill"), 10, true);
-        DisplayObj menuEat = new DisplayObj(50, 5, (Sprite)spriteMap.get("menuEat"), (Sprite)spriteMap.get("menuEat"), 10, false);
-        DisplayObj menuParty = new DisplayObj(50, 5, (Sprite)spriteMap.get("menuParty"), (Sprite)spriteMap.get("menuParty"), 10, false);
-        DisplayObj menuClean = new DisplayObj(50, 5, (Sprite)spriteMap.get("menuClean"), (Sprite)spriteMap.get("menuClean"), 10, false);
+        DisplayObj zoziGotchi = new DisplayObj(15, 6, (Sprite)spriteMap.get("standStill"), (Sprite)spriteMap.get("standStill"), 10, true);
+        DisplayObj menuEat = new DisplayObj(0, 40, (Sprite)spriteMap.get("menuEat"), (Sprite)spriteMap.get("menuEat"), 10, false);
+        DisplayObj menuParty = new DisplayObj(15, 40, (Sprite)spriteMap.get("menuParty"), (Sprite)spriteMap.get("menuParty"), 10, false);
+        DisplayObj menuClean = new DisplayObj(30, 40, (Sprite)spriteMap.get("menuClean"), (Sprite)spriteMap.get("menuClean"), 10, false);
         DisplayObj heart = new DisplayObj(5, 6, (Sprite)spriteMap.get("heart"), (Sprite)spriteMap.get("heart"), 10, true);
 
         Renderer.displayObjMap = new HashMap();
