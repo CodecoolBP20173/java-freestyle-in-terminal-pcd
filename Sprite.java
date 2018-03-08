@@ -4,10 +4,20 @@ import java.util.Arrays;
 
 class Sprite {
 	public String[][] frames;
+	public static HashMap spritePalette;
+	static {
+		spritePalette = new HashMap();
+		spritePalette.put('─', (char)27 + "[47m");
+		spritePalette.put('█', (char)27 + "[40m");
+		spritePalette.put('░', (char)27 + "[43m");
+		spritePalette.put('▒', (char)27 + "[44m");
+		spritePalette.put('▄', (char)27 + "[41m");
+	}
 
-	public Sprite(HashMap palette, String filepath, int numberOfFrames, int frameHeight) throws IOException {
+	public Sprite(String filepath, int numberOfFrames, int frameHeight) throws IOException {		
 		this.frames = new String [numberOfFrames][frameHeight];
 		FileReader inputStream = null;
+
 		try {
             inputStream = new FileReader(filepath);
             		
@@ -23,11 +33,12 @@ class Sprite {
                     lineCounter++;
                     stringBuilder.setLength(0);
                     if (lineCounter == frameHeight) {
-                        lineCounter=0;
+                        System.out.println("here"+lineCounter+" "+frameHeight);
+						lineCounter=0;
                         frameCounter++;   
                     }
 			    } else {
-                    String charPrint = palette.get(character) + " ";
+                    String charPrint = this.spritePalette.get(character) + " ";
                     stringBuilder.append(charPrint);
 				}
             }	

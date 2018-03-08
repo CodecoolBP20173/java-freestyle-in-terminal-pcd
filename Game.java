@@ -14,6 +14,7 @@ Methods:
     if deltaTime < timePerFrame
     sleep (timePerFrame - deltaTime)
 */
+import java.io.IOException;
 
 public class Game {
     public static long tick = 0;
@@ -42,7 +43,13 @@ public class Game {
         Renderer.screenHeight = 50;
         Renderer.screenWidth = 100;
         Renderer.createBackground();
-        Sprite[] testSprites = Test.testSpriteDeclare();
+        Sprite[] testSprites = new Sprite[2];
+        try {
+            testSprites[0] = new Sprite("stand_still_happy_anim.txt", 6, 33);
+            testSprites[1] = new Sprite("heart2.txt", 1, 5);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
         DisplayObj testObject1 = new DisplayObj(5, 6, testSprites[0], testSprites[0], 10);
         DisplayObj testObject2 = new DisplayObj(50, 5, testSprites[1], testSprites[1], 10);
 
