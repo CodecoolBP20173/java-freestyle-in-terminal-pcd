@@ -18,34 +18,34 @@ class Controller {
             if (this.depression == 5) {
                 this.tamagotchiHealth -=2;
             }
-            Renderer.displayObjMap["healthBar"].currentFrame = this.tamagotchiHealth;  
+            // Renderer.displayObjMap["healthBar"].currentFrame = this.tamagotchiHealth;  
         }       
     }
 
-    public void selectMenu(int menuIndex) {
-        switch (menuIndex) {
-            case 1:
-                Renderer.displayObjMap["menuEat"].currentFrame = 1;
-                Renderer.displayObjMap["menuParty"].currentFrame = 0;
-                Renderer.displayObjMap["menuClean"].currentFrame = 0;
-                this.currentMenu = 1;
-                break;
-            case 2:
-                Renderer.displayObjMap["menuEat"].currentFrame = 0;
-                Renderer.displayObjMap["menuParty"].currentFrame = 1;
-                Renderer.displayObjMap["menuClean"].currentFrame = 0;
-                this.currentMenu = 2;
-                break;
-            case 3:
-                Renderer.displayObjMap["menuEat"].currentFrame = 0;
-                Renderer.displayObjMap["menuParty"].currentFrame = 0;
-                Renderer.displayObjMap["menuClean"].currentFrame = 1;
-                this.currentMenu = 3;
-                break;
-        }
-    }
+//     public void selectMenu(int menuIndex) {
+//         switch (menuIndex) {
+//             case 1:
+//                 Renderer.displayObjMap["menuEat"].currentFrame = 1;
+//                 Renderer.displayObjMap["menuParty"].currentFrame = 0;
+//                 Renderer.displayObjMap["menuClean"].currentFrame = 0;
+//                 this.currentMenu = 1;
+//                 break;
+//             case 2:
+//                 Renderer.displayObjMap["menuEat"].currentFrame = 0;
+//                 Renderer.displayObjMap["menuParty"].currentFrame = 1;
+//                 Renderer.displayObjMap["menuClean"].currentFrame = 0;
+//                 this.currentMenu = 2;
+//                 break;
+//             case 3:
+//                 Renderer.displayObjMap["menuEat"].currentFrame = 0;
+//                 Renderer.displayObjMap["menuParty"].currentFrame = 0;
+//                 Renderer.displayObjMap["menuClean"].currentFrame = 1;
+//                 this.currentMenu = 3;
+//                 break;
+//         }
+//     }
 
-    public void poop() {
-        DisplayObj tamagotchi = Renderer.displayObjMap["tamagotchi"];
-    }
-}
+//     public void poop() {
+//         DisplayObj tamagotchi = Renderer.displayObjMap["tamagotchi"];
+//     }
+ }

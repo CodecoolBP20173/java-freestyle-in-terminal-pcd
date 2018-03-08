@@ -7,8 +7,9 @@ class DisplayObj {
     private int tickPerFrame;
     private long lastUpdateTick;
     private boolean busy;
+    private boolean autoAnimated;
 
-    public DisplayObj(int posX, int posY, Sprite sprite, Sprite defaultSprite, int tickPerFrame){
+    public DisplayObj(int posX, int posY, Sprite sprite, Sprite defaultSprite, int tickPerFrame, boolean autoAnimated){
         this.posX = posX;
         this.posY = posY;
         this.sprite = sprite;
@@ -17,10 +18,11 @@ class DisplayObj {
         this.lastUpdateTick = 0;
         this.busy = false;
         this.currentFrame = 0;
+        this.autoAnimated = autoAnimated;
     }
     public void update() {
         long deltaTick = Game.tick - this.lastUpdateTick;
-        if (deltaTick == this.tickPerFrame) {
+        if (deltaTick == this.tickPerFrame && this.autoAnimated == true) {
             this.lastUpdateTick = Game.tick;
             if (this.currentFrame == (this.sprite.frames.length-1)) {
                 if (this.busy) {
