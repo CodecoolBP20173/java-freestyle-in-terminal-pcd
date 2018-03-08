@@ -4,10 +4,24 @@ import java.util.Arrays;
 
 class Sprite {
 	public String[][] frames;
+	public static HashMap spritePalette;
+	static {
+		spritePalette = new HashMap();
+		Terminal t = new Terminal();
+		spritePalette.put('─', t.rgbColorBg(255, 255, 255));
+		spritePalette.put('G', t.rgbColorBg(127, 127, 127));
+		spritePalette.put('░', t.rgbColorBg(233, 227, 198));
+		spritePalette.put('$', t.rgbColorBg(153, 217, 234));
+		spritePalette.put('M', t.rgbColorBg(185, 122, 87));
+		spritePalette.put('@', t.rgbColorBg(255, 174, 201));
+		spritePalette.put('B', t.rgbColorBg(112, 146, 190));
+		spritePalette.put('█', t.rgbColorBg(215, 76, 76));
+	}
 
-	public Sprite(HashMap palette, String filepath, int numberOfFrames, int frameHeight) throws IOException {
+	public Sprite(String filepath, int numberOfFrames, int frameHeight) throws IOException {		
 		this.frames = new String [numberOfFrames][frameHeight];
 		FileReader inputStream = null;
+
 		try {
             inputStream = new FileReader(filepath);
             		
@@ -23,11 +37,11 @@ class Sprite {
                     lineCounter++;
                     stringBuilder.setLength(0);
                     if (lineCounter == frameHeight) {
-                        lineCounter=0;
+						lineCounter=0;
                         frameCounter++;   
                     }
 			    } else {
-                    String charPrint = palette.get(character) + " ";
+                    String charPrint = this.spritePalette.get(character) + " ";
                     stringBuilder.append(charPrint);
 				}
             }	
