@@ -107,6 +107,7 @@ public class Game {
             spriteMap.put("heart", new Sprite("heart2.txt", 1, 5));
             spriteMap.put("statusBar", new Sprite("statusbar.txt", 11, 3));
             spriteMap.put("poop", new Sprite("poop.txt", 3, 19));
+            spriteMap.put("eat", new Sprite("eat.txt", 6, 33))
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -116,9 +117,8 @@ public class Game {
         objectMap.put("menuClean", new DisplayObj(50, 5, (Sprite)spriteMap.get("menuClean"), (Sprite)spriteMap.get("menuClean"), 10, false));
         objectMap.put("heart", new DisplayObj(5, 6, (Sprite)spriteMap.get("heart"), (Sprite)spriteMap.get("heart"), 10, true));
         objectMap.put("statusBar", new DisplayObj(5, 6, (Sprite)spriteMap.get("statusBar"), (Sprite)spriteMap.get("statusBar"), 10, false));
-        objectMap.put("poop", new DisplayObj(5, 6, (Sprite)spriteMap.get("poop"), (Sprite)spriteMap.get("poop"), 10, true));
-       
-        Renderer.displayObjMap = new HashMap();
+        objectMap.put("poop", new DisplayObj(5, 6, (Sprite)spriteMap.get("poop"), (Sprite)spriteMap.get("poop"), 10, true));        Renderer.displayObjMap = new HashMap();
+    
         Renderer.displayObjMap.put("zoziGotchi", (DisplayObj)objectMap.get("zoziGotchi"));
         Renderer.displayObjMap.put("menuEat", (DisplayObj)objectMap.get("menuEat"));
         Renderer.displayObjMap.put("menuParty", (DisplayObj)objectMap.get("menuParty"));
