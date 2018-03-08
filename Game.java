@@ -18,35 +18,71 @@ Methods:
     if deltaTime < timePerFrame
     sleep (timePerFrame - deltaTime)
 */
+import java.io.*;
+import java.lang.*;
 
 public class Game {
     public static long tick = 0;
     public static long timePerFrame = 100;
+    private static Character tryToRead() {
+        try {
+            if (System.in.available() > 0) {
+                return (char)System.in.read();
+            }
+        }
+        catch (IOException e) {
+            System.err.println("Error " + e.getMessage());
+        }
+        return null;
+    }
+    private static void handleInput(Character input) {
+        if (input == 'a') {
+            // TODO Controller for menu
+            System.out.print("LEFT");
+        } else if (input == 'd') {
+            // TODO Controller for menu
+            System.out.print("RIGHT");
+        } else if (input == 'q') {
+            System.exit(0);
+        }
+    }
+    private static void run() {
+        long startTime = System.currentTimeMillis();
+
+        Iterator it = Renderer.getIteratorForDisplayObjMap();
+
+        while(it.hasNext()) {
+            Map.Entry mapItem = (Map.Entry)it.next();
+            DisplayObj displayItem = (DisplayObj)mapItem.getValue();
+            displayItem.update();
+        }
+
+        Renderer.renderScreen();
+        long endTime = System.currentTimeMillis();
+        long deltaTime = endTime - startTime;
+        if (deltaTime < timePerFrame) {
+            try {
+                Thread.sleep(timePerFrame - deltaTime);
+            } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        Game.tick++;
+    }
+
     public static void main(String[] args) {
         Game.initialize();
         while (true) {
-            long startTime = System.currentTimeMillis();
 
-            Iterator it = Renderer.getIteratorForDisplayObjMap();
-            while(it.hasNext()) {
-                Map.Entry mapItem = (Map.Entry)it.next();
-                DisplayObj displayItem = (DisplayObj)mapItem.getValue();
-                displayItem.update();
+            Character input = Game.tryToRead();
+            if (input != null){
+                Game.handleInput(input);
+            } else {
+                Game.run();
             }
-
-            Renderer.renderScreen();
-            long endTime = System.currentTimeMillis();
-            long deltaTime = endTime - startTime;
-            if (deltaTime < timePerFrame) {
-                try {
-                    Thread.sleep(timePerFrame - deltaTime);
-                } catch(InterruptedException ex) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-            Game.tick++;
         }
     }
+    
     public static void initialize () {
         Renderer.screenHeight = 50;
         Renderer.screenWidth = 100;
