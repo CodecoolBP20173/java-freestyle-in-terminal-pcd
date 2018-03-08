@@ -57,6 +57,8 @@ public class Game {
                 System.out.println(Controller.currentMenu);
             }
             
+        } else if (input == 'e') {
+            //TODO control: choosemenu
         } else if (input == 'q') {
             System.exit(0);
         }
