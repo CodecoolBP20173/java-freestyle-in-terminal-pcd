@@ -1,50 +1,59 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class Renderer {
-    public static DisplayObj[] displayObjArray;
+    public static HashMap displayObjMap;
     public static int offsetX;
     public static int offsetY;
     public static int screenWidth;
     public static int screenHeight; 
     public static Color bgColor;
 
-    public static void setDisplayObjArray(DisplayObj displayObjArrayInput, int index) {
+    public static void setDisplayObjMap(String key, DisplayObj value) {
         /**
-         * It sets to the given DisplayObj paramter by its index
-         * DisplayObj: given DisplayObj instance
-         * int: index
+         * It sets to the given value in the HashMap by its key
+         * String value: value
+         * String key: key
          */
-        displayObjArray[index] = displayObjArrayInput;
+        if (displayObjMap.containsKey(key)) displayObjMap.put(key, value);
     }
 
-    public static void setDisplayObjArray(DisplayObj[] displayObjArrayInput) {
-        /**
-         * It sets the displayObj array to the given array
-         * DisplayObj[]: DisplayObjs array
-         */
-        displayObjArray = displayObjArrayInput;
+    public static Iterator getIteratorForDisplayObjMap() {
+        Iterator it = displayObjMap.entrySet().iterator();
+        return it;
     }
 
-    public static DisplayObj[] getDisplayObjArray() {
+    public static void setDisplayObjMap(HashMap displayObjMapInput) {
         /**
-         * It returns the currect DisplayObj array
+         * It sets the displayObj map to the given map
+         * DisplayObjMap: DisplayObjs map
          */
-        return displayObjArray;
+        displayObjMap = displayObjMapInput;
     }
 
-    public static DisplayObj getDisplayObjArray(int index) {
+    public static HashMap getDisplayObjMap() {
         /**
-         * It returns a DisplayObj by its index in the array
-         * int: index in the array
+         * It returns the currect DisplayObj map
          */
-        return displayObjArray[index];
+        return displayObjMap;
+    }
+
+    public static DisplayObj getDisplayObj(String key) {
+        /**
+         * It returns a DisplayObj by its key in the map
+         * int: key in the map
+         */
+        return (DisplayObj)displayObjMap.get(key);
     }
 
     public static void renderScreen(){
-        
-        for (int i=0; i < Renderer.displayObjArray.length; i++) {
-            Renderer.printSprite(Renderer.displayObjArray[i]);
+        Iterator it = displayObjMap.entrySet().iterator();
+        while(it.hasNext()) {
+            Map.Entry mapItem = (Map.Entry)it.next();
+            Renderer.printSprite((DisplayObj)mapItem.getValue());
         }
     }
 
@@ -68,7 +77,7 @@ public class Renderer {
         Terminal t = new Terminal();
         int renderPosX = 1 + offsetY + object.getPosY();
         int renderPosY = offsetX + object.getPosX();
-        //t.moveTo(renderPosY, renderPosX);
+
         for (int i = 0; i < frame.length; i++) {
             t.moveTo(renderPosY, renderPosX+i);
             System.out.println(frame[i]);
