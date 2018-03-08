@@ -7,11 +7,15 @@ class Sprite {
 	public static HashMap spritePalette;
 	static {
 		spritePalette = new HashMap();
-		spritePalette.put('─', (char)27 + "[47m");
-		spritePalette.put('█', (char)27 + "[40m");
-		spritePalette.put('░', (char)27 + "[43m");
-		spritePalette.put('▒', (char)27 + "[44m");
-		spritePalette.put('▄', (char)27 + "[41m");
+		Terminal t = new Terminal();
+		spritePalette.put('─', t.rgbColorBg(255, 255, 255));
+		spritePalette.put('G', t.rgbColorBg(127, 127, 127));
+		spritePalette.put('░', t.rgbColorBg(233, 227, 198));
+		spritePalette.put('$', t.rgbColorBg(153, 217, 234));
+		spritePalette.put('M', t.rgbColorBg(185, 122, 87));
+		spritePalette.put('@', t.rgbColorBg(255, 174, 201));
+		spritePalette.put('B', t.rgbColorBg(112, 146, 190));
+		spritePalette.put('█', t.rgbColorBg(215, 76, 76));
 	}
 
 	public Sprite(String filepath, int numberOfFrames, int frameHeight) throws IOException {		
@@ -33,7 +37,6 @@ class Sprite {
                     lineCounter++;
                     stringBuilder.setLength(0);
                     if (lineCounter == frameHeight) {
-                        System.out.println("here"+lineCounter+" "+frameHeight);
 						lineCounter=0;
                         frameCounter++;   
                     }
