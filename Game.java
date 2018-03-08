@@ -27,6 +27,7 @@ import java.lang.*;
 public class Game {
     public static long tick = 0;
     public static HashMap spriteMap = new HashMap();
+    public static HashMap objectMap = new HashMap();
     public static long timePerFrame = 100;
     private static Character tryToRead() {
         try {
@@ -65,7 +66,6 @@ public class Game {
     }
     private static void run() {
         long startTime = System.currentTimeMillis();
-
         Iterator it = Renderer.getIteratorForDisplayObjMap();
 
         while(it.hasNext()) {
@@ -113,6 +113,9 @@ public class Game {
             spriteMap.put("menuClean", new Sprite("menu3.txt", 2, 7));
             spriteMap.put("pooping", new Sprite("pooping_spritesheet.txt", 1, 33));
             spriteMap.put("heart", new Sprite("heart2.txt", 1, 5));
+            spriteMap.put("statusBar", new Sprite("statusbar.txt", 11, 3));
+            spriteMap.put("poop", new Sprite("poop.txt", 3, 19));
+            spriteMap.put("eat", new Sprite("eat.txt", 6, 33));
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -121,6 +124,8 @@ public class Game {
         DisplayObj menuParty = new DisplayObj(25, 40, (Sprite)spriteMap.get("menuParty"), (Sprite)spriteMap.get("menuParty"), 10, false);
         DisplayObj menuClean = new DisplayObj(40, 40, (Sprite)spriteMap.get("menuClean"), (Sprite)spriteMap.get("menuClean"), 10, false);
         DisplayObj heart = new DisplayObj(5, 6, (Sprite)spriteMap.get("heart"), (Sprite)spriteMap.get("heart"), 10, true);
+        DisplayObj statusBar = new DisplayObj(5, 6, (Sprite)spriteMap.get("statusBar"), (Sprite)spriteMap.get("statusBar"), 10, true);
+        DisplayObj poop = new DisplayObj(5, 6, (Sprite)spriteMap.get("poop"), (Sprite)spriteMap.get("poop"), 10, true);
 
         Renderer.displayObjMap = new HashMap();
         Renderer.displayObjMap.put("zoziGotchi", zoziGotchi);
@@ -128,6 +133,8 @@ public class Game {
         Renderer.displayObjMap.put("menuParty", menuParty);
         Renderer.displayObjMap.put("menuClean", menuClean);
         Renderer.displayObjMap.put("heart", heart);
+        Renderer.displayObjMap.put("statusbar", statusBar);
+
 
         Renderer.offsetX = 20;
         Renderer.offsetY = 0;
