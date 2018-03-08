@@ -18,6 +18,9 @@ class Sprite {
 		spritePalette.put('█', t.rgbColorBg(215, 76, 76));
 		spritePalette.put('W', t.rgbColorBg(60, 172, 13));
 		spritePalette.put('A', t.rgbColorBg(23, 27, 0));
+		spritePalette.put('F', t.rgbColorBg(0, 0, 0));
+		spritePalette.put('K', t.rgbColorBg(103, 49, 19));
+		spritePalette.put('T', t.rgbColorBg(126, 71, 41));
 	}
 
 	public Sprite(String filepath, int numberOfFrames, int frameHeight) throws IOException {		
