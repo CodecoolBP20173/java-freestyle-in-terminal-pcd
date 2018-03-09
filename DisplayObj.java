@@ -57,4 +57,7 @@ class DisplayObj {
     public void setDefaultSprite(Sprite sprite) {
         this.defaultSprite = sprite;
     }
+    public int getTickPerFrame() {
+        return this.tickPerFrame;
+    }
 }

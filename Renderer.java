@@ -22,7 +22,7 @@ public class Renderer {
     }
 
     public static Iterator getIteratorForDisplayObjMap() {
-        Iterator it = displayObjMap.entrySet().iterator();
+        Iterator it = Renderer.displayObjMap.entrySet().iterator();
         return it;
     }
 

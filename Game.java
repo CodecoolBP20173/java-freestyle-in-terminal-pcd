@@ -64,7 +64,7 @@ public class Game {
         long startTime = System.currentTimeMillis();
         
         Controller.update();
-
+        System.out.println("Renderer map:" + Renderer.displayObjMap);
         Iterator it = Renderer.getIteratorForDisplayObjMap();
         while(it.hasNext()) {
             Map.Entry mapItem = (Map.Entry)it.next();
@@ -108,11 +108,12 @@ public class Game {
             spriteMap.put("standStill", testSprite);
             spriteMap.put("menuEat", new Sprite("menu1.txt", 2, 11));
             spriteMap.put("menuParty", new Sprite("menu2.txt", 2, 11));
-            spriteMap.put("menuClean", new Sprite("menu3.txt", 2, 7));
-            spriteMap.put("pooping", new Sprite("pooping_spritesheet.txt", 1, 33));
+            spriteMap.put("menuClean", new Sprite("menu3.txt", 2, 11));
+            spriteMap.put("pooping", new Sprite("pooping_spritesheet.txt", 3, 33));
             spriteMap.put("heart", new Sprite("heart2.txt", 1, 5));
             spriteMap.put("statusBar", new Sprite("statusbar.txt", 11, 3));
             spriteMap.put("poop", new Sprite("poop.txt", 3, 19));
+            spriteMap.put("emptypoop", new Sprite("emptypoop.txt", 1, 19));
             spriteMap.put("eat", new Sprite("eat.txt", 5, 33));
             spriteMap.put("dead", new Sprite("dead.txt", 1, 33));
             spriteMap.put("dance", new Sprite("dance.txt", 6, 33));
@@ -125,7 +126,7 @@ public class Game {
         DisplayObj menuClean = new DisplayObj(70, 40, (Sprite)spriteMap.get("menuClean"), (Sprite)spriteMap.get("menuClean"), 0, false);
         DisplayObj heart = new DisplayObj(45, 5, (Sprite)spriteMap.get("heart"), (Sprite)spriteMap.get("heart"), 0, false);
         DisplayObj statusBar = new DisplayObj(59, 6, (Sprite)spriteMap.get("statusBar"), (Sprite)spriteMap.get("statusBar"), 0, false);
-        DisplayObj poop = new DisplayObj(50, 30, (Sprite)spriteMap.get("poop"), (Sprite)spriteMap.get("poop"), 7, true);
+        DisplayObj poop = new DisplayObj(53, 18, (Sprite)Game.spriteMap.get("emptypoop"), (Sprite)Game.spriteMap.get("emptypoop"), 2, true);
 
         Renderer.displayObjMap = new HashMap();
         Renderer.displayObjMap.put("zoziGotchi", zoziGotchi);
@@ -134,8 +135,11 @@ public class Game {
         Renderer.displayObjMap.put("menuClean", menuClean);
         Renderer.displayObjMap.put("heart", heart);
         Renderer.displayObjMap.put("statusBar", statusBar);
+        Renderer.displayObjMap.put("poop", poop);
 
         Renderer.offsetX = 50;
         Renderer.offsetY = 0;
+        menuEat.currentFrame = 1;
+
     }
 }
